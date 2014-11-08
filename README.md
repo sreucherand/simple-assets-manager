@@ -45,6 +45,9 @@ Use `express` method.
 
 ```javascript
 app.use(require('simple-assets-manager').express(require('./assets.json')));
+
+app.use(express.static(path.join(__dirname, './app')));
+app.use(express.static(path.join(__dirname, './public')));
 ```
 
 - *index.view.html, with [swig](https://github.com/paularmstrong/swig)*
@@ -93,7 +96,7 @@ It will render,
 
 *gulpfile.js*
 
-Use gulp method. You need to specify the destination directory as option `path`. The example uses [gulp-if](https://github.com/robrich/gulp-if), [gulp-uglify](https://github.com/terinjokes/gulp-uglify) and [gulp-minify-css](https://github.com/jonathanepollack/gulp-minify-css) for minification.
+Use `gulp` method. You need to specify the destination directory as option `path`. The example uses [gulp-if](https://github.com/robrich/gulp-if), [gulp-uglify](https://github.com/terinjokes/gulp-uglify) and [gulp-minify-css](https://github.com/jonathanepollack/gulp-minify-css) for minification.
 
 ```javascript
 var gulpif = require('gulp-if');
