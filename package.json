@@ -1,0 +1,22 @@
+{
+  "name": "simple-assets-manager",
+  "version": "1.0.0",
+  "description": "Simple assets manager middleware for express. Includes gulp integration for concatenation and minification.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sreucherand/express-assets-manager.git"
+  },
+  "author": "Sylvain Reucherand <hello@sylvainreucherand.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sreucherand/express-assets-manager/issues"
+  },
+  "homepage": "https://github.com/sreucherand/express-assets-manager",
+  "dependencies": {
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "gulp-util": "^3.0.1"
+  }
+}
