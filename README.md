@@ -1,6 +1,6 @@
 # simple-assets-manager
 
-Simple assets manager middleware for [express](https://github.com/strongloop/express). Includes [gulp](https://github.com/gulpjs/gulp) integration for concatenation and minification.
+Simple assets manager middleware for [express](https://github.com/strongloop/express). Includes [gulp](https://github.com/gulpjs/gulp) integration for concatenation and minification task.
 
 ## Installation
 
@@ -39,17 +39,15 @@ $ npm install git@github.com:sreucherand/simple-assets-manager.git
 
 Use `express` method.
 
-*@param assets - definition in json format*
+*@param assets - assets definition file content*
 
-*app.js*
+- *app.js*
 
 ```javascript
 app.use(require('simple-assets-manager').express(require('./assets.json')));
 ```
 
-*index.view.html*
-
-With [swig](https://github.com/paularmstrong/swig)
+- *index.view.html, with [swig](https://github.com/paularmstrong/swig)*
 
 ```html
 <html>
@@ -95,9 +93,7 @@ It will render,
 
 *gulpfile.js*
 
-Use gulp method. You need to specify the destination directory as option `path`.
-
-The example uses [gulp-if](https://github.com/robrich/gulp-if), [gulp-uglify](https://github.com/terinjokes/gulp-uglify) and [gulp-minify-css](https://github.com/jonathanepollack/gulp-minify-css).
+Use gulp method. You need to specify the destination directory as option `path`. The example uses [gulp-if](https://github.com/robrich/gulp-if), [gulp-uglify](https://github.com/terinjokes/gulp-uglify) and [gulp-minify-css](https://github.com/jonathanepollack/gulp-minify-css) for minification.
 
 ```javascript
 var gulpif = require('gulp-if');
@@ -116,10 +112,10 @@ gulp.task('compile', ['sass'], function () {
 });
 ```
 
-It will generate the following tree :
+It will generate the following files :
 
-|-- public
-|--|-- css
-|--|--|-- main.min.css
-|--|-- js
-|--|--|-- scripts.min.js
+.
+├── css
+│   └── main.min.css
+└── js
+    └── scripts.min.js
