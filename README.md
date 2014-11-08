@@ -5,7 +5,7 @@ Simple assets manager middleware for [express](https://github.com/strongloop/exp
 ## Installation
 
 ```bash
-$ npm install git@github.com:sreucherand/simple-assets-manager.git
+$ npm install git+https://github.com/sreucherand/simple-assets-manager.git
 ```
 
 ## Features
