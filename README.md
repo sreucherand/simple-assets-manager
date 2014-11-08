@@ -115,7 +115,8 @@ gulp.task('compile', ['sass'], function () {
 It will generate the following files :
 
 .
-├── css
-│   └── main.min.css
-└── js
-    └── scripts.min.js
++-- public
+    +-- css
+        +-- main.min.css
+    +-- js
+        +-- scripts.min.js
