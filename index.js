@@ -66,7 +66,7 @@ module.exports.express = function (assets) {
 module.exports.gulp = function (options) {
   options.path = options.path || __dirname;
   
-  return through.obj(function (file) {
+  return through.obj(function (file, encoding, callback) {
     var assets = JSON.parse(file.contents.toString());
     var asset = null;
     
@@ -84,6 +84,10 @@ module.exports.gulp = function (options) {
           });
         }).join(''))
       }));
+    }
+    
+    if (typeof callback === 'function') {
+      callback();
     }
   });
 };
