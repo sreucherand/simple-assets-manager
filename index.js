@@ -18,9 +18,9 @@ var Asset = (function () {
   Asset.prototype.template = function (url) {
     switch (this.type) {
       case 'css':
-        return '<link rel="stylesheet" href="'+url+'">';
+        return '<link rel="stylesheet" href="'+path.normalize('/'+url)+'">';
       case 'js':
-        return '<script src="'+url+'"></script>';
+        return '<script src="'+path.normalize('/'+url)+'"></script>';
     }
     return;
   };
