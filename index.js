@@ -9,18 +9,19 @@ var env = process.env.NODE_ENV || 'development';
 
 var Asset = (function () {
   
-  function Asset (name, content) {
+  function Asset (name, content, options) {
     this.name = name;
     this.type = this.name.split('.').pop();
     this.files = content.files || [];
+    this.options = options || {};
   };
   
   Asset.prototype.template = function (url) {
     switch (this.type) {
       case 'css':
-        return '<link rel="stylesheet" href="'+url+'">';
+        return '<link rel="stylesheet" href="'+path.resolve(this.options.path || '/', url)+'">';
       case 'js':
-        return '<script src="'+url+'"></script>';
+        return '<script src="'+path.resolve(this.options.path || '/', url)+'"></script>';
     }
     return;
   };
@@ -43,12 +44,12 @@ var Asset = (function () {
   
 })();
 
-module.exports.express = function (assets) {
+module.exports.express = function (assets, options) {
   var assets = assets || {};
   var options = options || {};
   
   for (var name in assets) {
-    assets[name] = new Asset(name, assets[name]);
+    assets[name] = new Asset(name, assets[name], options);
   }
   
   return function (req, res, next) {
@@ -73,6 +74,11 @@ module.exports.gulp = function (options) {
     for (var name in assets) {
       asset = assets[name];
       asset.srcPath = asset.srcPath || '';
+      asset.ignore = asset.ignore || false;
+      
+      if (asset.ignore) {
+        continue;
+      }
       
       this.push(new gutil.File({
         cwd: __dirname,
